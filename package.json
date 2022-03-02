@@ -1,5 +1,6 @@
 {
   "name": "mern-ecommerce-from-scratch",
+  "type": "module",
   "version": "1.0.0",
   "description": "MERN shopping cart app",
   "main": "server.js",
