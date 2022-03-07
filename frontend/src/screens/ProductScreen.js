@@ -6,6 +6,7 @@ import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { listProductDetails } from '../actions/productActions'
+import { addToCart } from '../actions/cartActions'
 
 const ProductScreen = () => {
   const navigate = useNavigate()
@@ -22,6 +23,7 @@ const ProductScreen = () => {
   }, [dispatch, params.id])
 
   const addToCartHandler = () => {
+    dispatch(addToCart(product._id, qty))
     navigate(`/cart/${params.id}?qty=${qty}`)
   }
 
