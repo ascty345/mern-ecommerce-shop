@@ -85,8 +85,7 @@ const ProductScreen = () => {
                           as='select'
                           className='form-select'
                           value={qty}
-                          onChange={(e) => setQty(e.target.value)}
-                        >
+                          onChange={(e) => setQty(e.target.value)}>
                           {[...Array(product.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
                               {x + 1}
@@ -103,8 +102,7 @@ const ProductScreen = () => {
                     onClick={addToCartHandler}
                     className='w-100'
                     type='button'
-                    disabled={product.countInStock === 0}
-                  >
+                    disabled={product.countInStock === 0}>
                     Add To Cart
                   </Button>
                 </ListGroup.Item>
