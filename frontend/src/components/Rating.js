@@ -15,8 +15,7 @@ const Rating = (props) => {
               : value >= 0.5
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
-          }
-        ></i>
+          }></i>
       </span>
       <span>
         <i
@@ -27,8 +26,7 @@ const Rating = (props) => {
               : value >= 1.5
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
-          }
-        ></i>
+          }></i>
       </span>
       <span>
         <i
@@ -39,8 +37,7 @@ const Rating = (props) => {
               : value >= 2.5
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
-          }
-        ></i>
+          }></i>
       </span>
       <span>
         <i
@@ -51,8 +48,7 @@ const Rating = (props) => {
               : value >= 3.5
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
-          }
-        ></i>
+          }></i>
       </span>
       <span>
         <i
@@ -63,8 +59,7 @@ const Rating = (props) => {
               : value >= 4.5
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
-          }
-        ></i>
+          }></i>
       </span>
       <span>{text && text}</span>
     </div>
@@ -75,10 +70,10 @@ Rating.defaultProps = {
   color: '#f8e825',
 }
 
-Rating.propTypes = {
-  value: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  color: PropTypes.string,
-}
+// Rating.propTypes = {
+//   value: PropTypes.number.isRequired,
+//   text: PropTypes.string.isRequired,
+//   color: PropTypes.string,
+// }
 
 export default Rating
