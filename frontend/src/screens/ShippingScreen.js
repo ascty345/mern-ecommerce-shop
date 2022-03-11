@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
@@ -8,7 +8,6 @@ import { saveShippingAddress } from '../actions/cartActions'
 
 const ShippingScreen = () => {
   const navigate = useNavigate()
-  const location = useLocation()
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)

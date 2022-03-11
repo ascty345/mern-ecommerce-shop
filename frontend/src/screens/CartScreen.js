@@ -29,7 +29,6 @@ const CartScreen = () => {
   }
 
   const checkoutHandler = () => {
-    console.log('Checkout')
     navigate('/login?redirect=shipping')
   }
 
