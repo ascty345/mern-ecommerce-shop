@@ -18,7 +18,8 @@ const LoginScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
+  // Remember to put `/` before the search param to not build upon the existing URL
+  const redirect = location.search ? `/${location.search.split('=')[1]}` : '/'
 
   useEffect(() => {
     if (userInfo) {
