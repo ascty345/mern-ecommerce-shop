@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUser } from '../actions/userActions'
+import {
+  USER_DETAILS_RESET,
+  USER_UPDATE_RESET,
+} from '../constants/userConstants'
 
 const UserEditScreen = () => {
-  const location = useLocation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -17,25 +20,36 @@ const UserEditScreen = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
-  const [message, setMessage] = useState(null)
 
   const userDetails = useSelector((state) => state.userDetails)
   const { loading, error, user } = userDetails
 
-  const redirect = location.search ? location.search.split('=')[1] : '/'
+  const userUpdate = useSelector((state) => state.userUpdate)
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate
 
   useEffect(() => {
-    if (!user.name || user._id !== userId) {
-      dispatch(getUserDetails(userId))
+    if (successUpdate) {
+      dispatch({ type: USER_UPDATE_RESET })
+      dispatch({ type: USER_DETAILS_RESET })
+      navigate('/admin/userList')
     } else {
-      setName(user.name)
-      setEmail(user.email)
-      setIsAdmin(user.isAdmin)
+      if (!user.name || user._id !== userId) {
+        dispatch(getUserDetails(userId))
+      } else {
+        setName(user.name)
+        setEmail(user.email)
+        setIsAdmin(user.isAdmin)
+      }
     }
-  }, [dispatch, user, userId])
+  }, [dispatch, user, userId, navigate, successUpdate])
 
   const submitHandler = (e) => {
     e.preventDefault() // Prevent the page from refreshing after submission
+    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
   }
 
   return (
@@ -45,6 +59,8 @@ const UserEditScreen = () => {
       </Button>
       <FormContainer>
         <h1>Edit User</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
