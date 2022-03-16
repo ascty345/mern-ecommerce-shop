@@ -4,7 +4,7 @@ import { Table, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listUsers } from '../actions/userActions'
+import { listUsers, deleteUser } from '../actions/userActions'
 
 const UserListScreen = () => {
   const dispatch = useDispatch()
@@ -16,8 +16,13 @@ const UserListScreen = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const userDelete = useSelector((state) => state.userDelete)
+  const { success: successDelete } = userDelete
+
   const deleteHandler = (id) => {
-    console.log('delete')
+    if (window.confirm('Are you sure')) {
+      dispatch(deleteUser(id))
+    }
   }
 
   useEffect(() => {
@@ -26,7 +31,7 @@ const UserListScreen = () => {
     } else {
       navigate('/login')
     }
-  }, [dispatch, userInfo, navigate])
+  }, [dispatch, userInfo, navigate, successDelete])
 
   return (
     <>
@@ -70,9 +75,10 @@ const UserListScreen = () => {
                     <i className='fas fa-edit' />
                   </Button>
                   <Button
+                    disabled={userInfo._id === user._id}
                     variant='danger'
                     className='btn-sm'
-                    onClick={deleteHandler.bind(user._id)}>
+                    onClick={deleteHandler.bind(null, user._id)}>
                     <i className='fas fa-trash' />
                   </Button>
                 </td>
