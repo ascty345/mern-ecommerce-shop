@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
@@ -24,6 +25,7 @@ const ProductEditScreen = () => {
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState('')
   const [description, setDescription] = useState('')
+  const [uploading, setUploading] = useState(false)
 
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
@@ -34,6 +36,9 @@ const ProductEditScreen = () => {
     error: errorUpdate,
     success: successUpdate,
   } = productUpdate
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
   useEffect(() => {
     if (successUpdate) {
@@ -54,6 +59,30 @@ const ProductEditScreen = () => {
       }
     }
   }, [dispatch, product, productId, successUpdate, navigate])
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      setImage(data)
+      setUploading(false)
+    } catch (error) {
+      console.log(error)
+      setUploading(false)
+    }
+  }
 
   const submitHandler = (e) => {
     e.preventDefault() // Prevent the page from refreshing after submission
@@ -118,6 +147,14 @@ const ProductEditScreen = () => {
                   setImage(e.target.value)
                 }}
               />
+              <Form.Group controlId='image-file'>
+                <Form.Control
+                  type='file'
+                  placeholder='Upload your image'
+                  onChange={uploadFileHandler}
+                />
+              </Form.Group>
+              {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId='brand'>
               <Form.Label>Brand</Form.Label>
