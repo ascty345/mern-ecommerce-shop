@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { LinkContainer } from 'react-router-bootstrap'
 import { Link } from 'react-router-dom'
 import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 
 const Header = () => {
@@ -22,6 +23,7 @@ const Header = () => {
           <Navbar.Brand as={Link} to='/'>
             ProShop
           </Navbar.Brand>
+          <SearchBox />
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse
             className='justify-content-end'
