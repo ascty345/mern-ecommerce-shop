@@ -1,7 +1,7 @@
 # MERN ECOMMERCE SHOP
 
 In this project, I built a fully functional Ecommerce website, which contains several features such as authentication, upload pictures, 
-admin managament, PayPal API for handling payment. The website is built from the inside out using MERN stack technology.
+admin managament, pagination, PayPal API for handling payment. The website is built from the inside out using MERN stack technology.
 
 **Technology**: *React, Redux, NodeJs, CSS, HTML, JavaScript.*
 
@@ -53,8 +53,8 @@ Windows Cmd Prompt or Powershell
 Check in browser on http://localhost:5000/
 
 ### Screenshots
-![This is an image](https://ibb.co/7kH1YJj)
-![This is an image](https://ibb.co/yW7trrH)
-![This is an image](https://ibb.co/rxHSBMh)
-![This is an image](https://ibb.co/zXCG8cj)
-![This is an image](https://ibb.co/XXzZTFK)
+![screen-shot-1](https://user-images.githubusercontent.com/71373378/160825484-40185480-bb90-414d-a664-08abb3fb9e52.png)
+![screen-shot-2](https://user-images.githubusercontent.com/71373378/160825489-a3a5254d-155e-458a-999e-cedc03920d2a.png)
+![screen-shot-3](https://user-images.githubusercontent.com/71373378/160825490-fc41817d-10e9-4865-a232-cf84dbf32488.png)
+![screen-shot-4](https://user-images.githubusercontent.com/71373378/160825492-3c5f4aa8-8ef5-4d9c-b94b-df31f9c2583d.png)
+![screen-shot-5](https://user-images.githubusercontent.com/71373378/160825495-5908c408-d1b5-47b4-8c7a-7a2b6aa092ad.png)
