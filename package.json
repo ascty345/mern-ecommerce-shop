@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "MERN shopping cart app",
   "main": "server.js",
+  "engines": {
+    "node": "v16.14.0"
+  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
@@ -11,7 +14,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Tue",
   "license": "ISC",
