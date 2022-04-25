@@ -6,12 +6,12 @@ admin managament, pagination, PayPal API for handling payment. The website is bu
 **Technology**: *React, Redux, NodeJs, CSS, HTML, JavaScript.*
 
 ## Quick Start 🦜
-Add a .env file in root folder with the following
+Add a .env file in root folder with the following without <> tags
 
       NODE_ENV = development
       PORT = 5000
       MONGO_URI = <your_mongoDB_Atlas_uri_with_credentials>
-      JWT_SECRET = abc123
+      JWT_SECRET = <your_JWT_secret>
       PAYPAL_CLIENT_ID = <your_PayPal_client_ID>
     
 
@@ -28,7 +28,7 @@ Add a .env file in root folder with the following
 Now you can check the site on http://localhost:3000/
 ___
 
-### Build for production
+### Build for production 🚒🚒🚒
 Running a build in the frontend
 
     cd frontend
